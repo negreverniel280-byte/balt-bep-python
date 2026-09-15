@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BALT-BEP Sales Report</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header><div><strong>BALT-BEP</strong><span> Sales Report</span></div></header>
+<main>
+<h1>Sales Report</h1>
+{% if data.error %}<div class="alert">{{ data.error }}</div>{% endif %}
+<section class="cards">
+<div class="card"><small>Today</small><strong>₱{{ data.today.sales|default('0.00') }}</strong><span>{{ data.today.bookings|default(0) }} bookings</span></div>
+<div class="card"><small>Last 7 Days</small><strong>₱{{ data.weekly.sales|default('0.00') }}</strong><span>{{ data.weekly.bookings|default(0) }} bookings</span></div>
+<div class="card"><small>This Month</small><strong>₱{{ data.monthly.sales|default('0.00') }}</strong><span>{{ data.monthly.bookings|default(0) }} bookings</span></div>
+</section>
+<section class="panel"><h2>Sales Report Status</h2><p>This page is running on Python/Flask through Render.</p></section>
+</main>
+</body>
+</html>

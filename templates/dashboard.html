@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BALT-BEP Admin Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header><div><strong>BALT-BEP</strong><span> Admin Dashboard</span></div></header>
+<main>
+<h1>Admin Dashboard</h1>
+{% if data.error %}<div class="alert">{{ data.error }}</div>{% endif %}
+<section class="cards">
+<div class="card"><small>Today's Sales</small><strong>₱{{ data.totalSales|default('0.00') }}</strong></div>
+<div class="card"><small>Today's Passengers</small><strong>{{ data.totalPassengers|default(0) }}</strong></div>
+<div class="card"><small>Available Seats</small><strong>{{ data.availableSeats|default(0) }}</strong></div>
+<div class="card"><small>Booking Cutoff</small><strong>{{ data.bookingCutoffValue|default('--') }}</strong></div>
+</section>
+<section class="panel">
+<h2>Dashboard Status</h2>
+<p>This page is running on Python/Flask through Render. Your PHP/MySQL booking system remains on InfinityFree.</p>
+<p>Next step: connect the InfinityFree Dashboard API to this service.</p>
+</section>
+</main>
+</body>
+</html>
